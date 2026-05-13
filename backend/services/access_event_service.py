@@ -17,6 +17,15 @@ def get_pubsub():
     return pubsub
 
 
+def publish_event(event):
+    try:
+        get_pubsub().publish(event)
+        return True
+    except Exception as exc:
+        print(f"Falha ao publicar evento no PubNub: {exc}")
+        return False
+
+
 def append_csv(event):
     file_exists = os.path.exists(CSV_PATH)
 
@@ -247,7 +256,7 @@ def register_event(payload):
 
     save_event(event)
     append_csv(event)
-    get_pubsub().publish(event)
+    publish_event(event)
 
     return event
 
@@ -262,7 +271,7 @@ def sync_events(events_payload):
 
             save_event(event)
             append_csv(event)
-            get_pubsub().publish(event)
+            publish_event(event)
 
             synced_events.append({
                 "index": index,
