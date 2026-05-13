@@ -1,0 +1,14 @@
+node_modules/
+dist/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.csv
+*.tsbuildinfo
+rfid_cache.json
+rfid_reader_backup.csv

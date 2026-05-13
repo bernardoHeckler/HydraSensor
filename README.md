@@ -1,99 +1,159 @@
 # HydraSensor
 
-Projeto simples de controle de acesso com RFID, API Flask, persistencia em SQLite/CSV e painel web em tempo real via PubNub.
+HydraSensor e um sistema de controle de acesso para uma sala de seguranca usando Raspberry Pi 4, leitor RFID, LEDs, buzzer, API Flask, SQLite, CSV, PubNub e painel web React.
 
-## O que existe no projeto
+O projeto foi organizado para atender ao trabalho de Hardware Architecture: controlar acesso fisico, registrar entradas/saidas, identificar acessos negados e invasoes, exibir monitoramento em tempo real e gerar dados para analise com Pandas.
 
-- `app.py`: API Flask que recebe eventos RFID, grava em SQLite e CSV e publica no PubNub.
-- `button.py`: leitor RFID para Raspberry Pi com LEDs e buzzer.
-- `pubsub.py`: cliente PubNub usado pela API.
-- `index.html`: dashboard em tempo real servido pela propria API.
+## Visao Geral
 
-## Requisitos
+Fluxo principal:
 
-- Python 3.9 ou 3.10
-- `pip`
-- Para usar o leitor RFID: Raspberry Pi com SPI habilitado
-
-## 1. Instalar as dependencias
-
-No diretorio do projeto:
-
-### Windows PowerShell
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+```text
+RFID na Raspberry Pi
+        |
+        v
+backend/button.py
+        |
+        | HTTP
+        v
+backend/app.py
+        |
+        +--> SQLite
+        +--> CSV
+        +--> PubNub
+                 |
+                 v
+frontend React
 ```
 
-### Linux / Raspberry Pi
+Componentes:
+
+- `backend/`: API Flask, banco SQLite, regras de acesso, leitor RFID, exportacao CSV e PubNub.
+- `frontend/`: painel React/Vite para login, monitoramento, colaboradores e logs.
+- `backend/analysis_access_logs.ipynb`: notebook Pandas para analise dos logs.
+- `README-PRINCIPAL.md`: guia completo para rodar tudo na Raspberry Pi 4.
+
+## O Que O Sistema Faz
+
+- Le tag RFID no Raspberry Pi.
+- Verifica se a tag esta cadastrada.
+- Verifica se o colaborador esta ativo.
+- Verifica se o colaborador tem acesso a sala.
+- Registra `entrada` e `saida`.
+- Registra `acesso_negado` para colaborador cadastrado sem permissao ou inativo.
+- Registra `invasao` para tag desconhecida.
+- Aciona LED verde, LED vermelho e buzzer conforme o resultado.
+- Salva eventos em SQLite e CSV.
+- Publica eventos no PubNub para o frontend em tempo real.
+- Permite cadastrar, editar, listar e inativar colaboradores.
+- Exporta logs para analise com Pandas.
+- Mantem cache local no leitor RFID para perda temporaria de conexao.
+
+## Estrutura Do Projeto
+
+```text
+HydraSensor/
+  backend/
+    app.py
+    button.py
+    database.py
+    pubsub.py
+    routes/
+    services/
+    analysis_access_logs.ipynb
+    README.md
+  frontend/
+    src/
+    package.json
+    vite.config.ts
+    README.md
+  README.md
+  README-PRINCIPAL.md
+```
+
+## Como Rodar Rapidamente
+
+Backend:
 
 ```bash
+cd backend
 python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+.venv/bin/pip install -r requirements.txt
+APP_HOST=0.0.0.0 APP_PORT=5000 .venv/bin/python app.py
 ```
 
-## 2. Subir a API
+Frontend:
 
 ```bash
-python app.py
+cd frontend
+npm install
+VITE_API_PROXY_TARGET=http://127.0.0.1:5000 npm run dev -- --host 0.0.0.0
 ```
 
-A API inicia por padrao em:
-
-- `http://127.0.0.1:5000`
-- Dashboard: `http://127.0.0.1:5000/`
-- Health check: `http://127.0.0.1:5000/health`
-
-## 3. Executar o leitor RFID
-
-Esse passo faz sentido no Raspberry Pi.
-
-Antes de rodar, habilite o SPI:
+Leitor RFID na Raspberry:
 
 ```bash
-sudo raspi-config
+cd backend
+API_BASE_URL=http://127.0.0.1:5000 .venv/bin/python button.py
 ```
 
-Depois acesse `Interface Options` -> `SPI` -> `Enable`.
+Acesse:
 
-Com a API rodando, execute:
-
-```bash
-python3 button.py
+```text
+http://IP_DA_RASPBERRY:5173
 ```
 
-Se houver erro de permissao ao acessar GPIO/SPI, rode com permissao elevada.
+Credenciais iniciais:
 
-## 4. Variaveis de ambiente opcionais
-
-A API funciona com valores padrao, mas voce pode sobrescrever:
-
-- `APP_DB_PATH`: caminho do banco SQLite. Padrao: `rfid_access.db`
-- `APP_CSV_PATH`: caminho do CSV. Padrao: `rfid_access_log.csv`
-- `PUBNUB_SUBSCRIBE_KEY`: chave subscribe do PubNub
-- `PUBNUB_PUBLISH_KEY`: chave publish do PubNub
-- `PUBNUB_CHANNEL`: nome do canal PubNub. Padrao: `meu_canal`
-
-Exemplo no PowerShell:
-
-```powershell
-$env:PUBNUB_CHANNEL = "meu_canal"
-python app.py
+```text
+usuario: admin
+senha: admin123
 ```
 
-## 5. Fluxo rapido para testar
+## Fluxo De Demonstracao
 
-1. Inicie `app.py`.
-2. Abra `http://127.0.0.1:5000/` no navegador.
-3. Rode `button.py` no Raspberry Pi.
-4. Aproxime uma tag RFID do leitor.
-5. Veja o evento aparecer no painel em tempo real.
+1. Suba o backend.
+2. Suba o frontend.
+3. Suba o leitor RFID.
+4. Acesse o painel.
+5. Faca login.
+6. Cadastre um colaborador com tag RFID.
+7. Aproxime a tag autorizada e demonstre `entrada`.
+8. Aproxime novamente e demonstre `saida`.
+9. Cadastre ou edite um colaborador sem permissao e demonstre `acesso_negado`.
+10. Aproxime uma tag nao cadastrada e demonstre `invasao`.
+11. Abra a aba `Logs` e exporte o CSV.
 
-## Observacoes
+## Documentacao
 
-- `button.py` depende de hardware e nao deve rodar normalmente no Windows.
-- O `index.html` esta usando a chave subscribe e o canal direto no frontend. Se voce trocar o canal no backend, mantenha o mesmo valor no frontend.
-- Os eventos ficam salvos em SQLite e tambem em CSV para consulta rapida.
+- Guia principal de uso na Raspberry Pi: [README-PRINCIPAL.md](README-PRINCIPAL.md)
+- Backend: [backend/README.md](backend/README.md)
+- Frontend: [frontend/README.md](frontend/README.md)
+
+## Aderencia Ao PDF
+
+Atendido no codigo:
+
+- aplicacao embarcada com Raspberry Pi, RFID, LED e buzzer;
+- verificacao de tag, permissao, ativo/inativo e tags desconhecidas;
+- identificacao de entrada e saida;
+- monitoramento de permanencia por relatorio diario;
+- registro de tentativas nao permitidas;
+- registro de tentativas de invasao;
+- backend Flask com SQLite;
+- comunicacao HTTP entre leitor e backend;
+- painel web com login;
+- CRUD de colaboradores, tags e permissoes;
+- pagina de monitoramento em tempo real;
+- cache local para perda de conexao;
+- exportacao CSV;
+- notebook Pandas.
+
+Pendencias de entrega fora do codigo:
+
+- executar o notebook e salvar as saidas das celulas;
+- testar fisicamente na Raspberry Pi 4;
+- preparar documentacao final em PDF;
+- preparar apresentacao final em PDF;
+- incluir fotos reais do MVP.
+

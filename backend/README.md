@@ -1,99 +1,226 @@
-# HydraSensor
+# Backend HydraSensor
 
-Projeto simples de controle de acesso com RFID, API Flask, persistencia em SQLite/CSV e painel web em tempo real via PubNub.
+O backend e a API central do HydraSensor. Ele recebe leituras RFID, consulta permissoes, registra eventos, exporta logs e envia atualizacoes em tempo real para o frontend via PubNub.
 
-## O que existe no projeto
+## 1. Arquivos Principais
 
-- `app.py`: API Flask que recebe eventos RFID, grava em SQLite e CSV e publica no PubNub.
-- `button.py`: leitor RFID para Raspberry Pi com LEDs e buzzer.
-- `pubsub.py`: cliente PubNub usado pela API.
-- `index.html`: dashboard em tempo real servido pela propria API.
-
-## Requisitos
-
-- Python 3.9 ou 3.10
-- `pip`
-- Para usar o leitor RFID: Raspberry Pi com SPI habilitado
-
-## 1. Instalar as dependencias
-
-No diretorio do projeto:
-
-### Windows PowerShell
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+```text
+backend/
+  app.py
+  config.py
+  database.py
+  button.py
+  simulate_reader.py
+  pubsub.py
+  routes/
+  services/
+  analysis_access_logs.ipynb
 ```
 
-### Linux / Raspberry Pi
+- `app.py`: inicializa Flask, cria banco e registra rotas.
+- `config.py`: centraliza variaveis de ambiente.
+- `database.py`: cria tabelas SQLite e usuario inicial.
+- `button.py`: script do leitor RFID na Raspberry Pi.
+- `simulate_reader.py`: simula uma leitura RFID sem hardware.
+- `pubsub.py`: publica eventos no PubNub.
+- `routes/`: camada HTTP.
+- `services/`: regras de negocio.
+- `analysis_access_logs.ipynb`: analise Pandas.
+
+## 2. Como Funciona
+
+Quando o leitor RFID envia uma tag:
+
+1. `routes/access_event_routes.py` recebe `POST /v1/access-events`.
+2. `services/access_event_service.py` normaliza o payload.
+3. O backend consulta `collaborators` pelo `rfid_tag`.
+4. O backend decide o tipo do evento.
+5. O evento e salvo no SQLite.
+6. O evento e adicionado ao CSV.
+7. O evento e publicado no PubNub.
+8. O frontend recebe o evento em tempo real.
+
+Regras de evento:
+
+| Condicao | Evento |
+| --- | --- |
+| Tag nao encontrada | `invasao` |
+| Colaborador inativo | `acesso_negado` |
+| Colaborador sem permissao | `acesso_negado` |
+| Colaborador autorizado e fora da sala | `entrada` |
+| Colaborador autorizado e dentro da sala | `saida` |
+
+## 3. Banco De Dados
+
+Arquivo padrao:
+
+```text
+backend/rfid_access.db
+```
+
+Tabelas:
+
+- `users`: usuarios do painel.
+- `collaborators`: colaboradores, matriculas, cargos, tags e permissoes.
+- `access_events`: entradas, saidas, acessos negados e invasoes.
+
+O usuario inicial e criado automaticamente:
+
+```text
+usuario: admin
+senha: admin123
+```
+
+## 4. Instalar Dependencias
 
 ```bash
+cd backend
 python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+.venv/bin/pip install --upgrade pip
+.venv/bin/pip install -r requirements.txt
 ```
 
-## 2. Subir a API
+`requirements.txt` contem dependencias da API, Pandas e hardware RFID/GPIO.
+
+## 5. Rodar A API
 
 ```bash
-python app.py
+cd backend
+APP_HOST=0.0.0.0 APP_PORT=5000 .venv/bin/python app.py
 ```
 
-A API inicia por padrao em:
-
-- `http://127.0.0.1:5000`
-- Dashboard: `http://127.0.0.1:5000/`
-- Health check: `http://127.0.0.1:5000/health`
-
-## 3. Executar o leitor RFID
-
-Esse passo faz sentido no Raspberry Pi.
-
-Antes de rodar, habilite o SPI:
+Teste:
 
 ```bash
-sudo raspi-config
+curl http://127.0.0.1:5000/health
 ```
 
-Depois acesse `Interface Options` -> `SPI` -> `Enable`.
+Resposta:
 
-Com a API rodando, execute:
+```json
+{
+  "status": "ok"
+}
+```
+
+## 6. Rotas Principais
+
+Autenticacao:
+
+- `POST /v1/auth/login`
+- `POST /v1/auth/register`
+
+Colaboradores:
+
+- `GET /v1/collaborators`
+- `POST /v1/collaborators`
+- `GET /v1/collaborators/<id>`
+- `PUT /v1/collaborators/<id>`
+- `DELETE /v1/collaborators/<id>`
+
+Eventos:
+
+- `GET /v1/access-events`
+- `POST /v1/access-events`
+- `POST /v1/access-events/sync`
+- `GET /v1/access-events/export.csv`
+
+Dispositivo e monitoramento:
+
+- `GET /v1/device/bootstrap`
+- `GET /v1/monitoring/summary`
+- `GET /v1/reports/daily-presence`
+
+Rotas de colaboradores exigem:
+
+```text
+Authorization: Bearer admin-demo-token
+```
+
+O frontend recebe esse token ao fazer login.
+
+## 7. Rodar O Leitor RFID
+
+Com a API rodando:
 
 ```bash
-python3 button.py
+cd backend
+API_BASE_URL=http://127.0.0.1:5000 .venv/bin/python button.py
 ```
 
-Se houver erro de permissao ao acessar GPIO/SPI, rode com permissao elevada.
+Se houver erro de GPIO/SPI:
 
-## 4. Variaveis de ambiente opcionais
-
-A API funciona com valores padrao, mas voce pode sobrescrever:
-
-- `APP_DB_PATH`: caminho do banco SQLite. Padrao: `rfid_access.db`
-- `APP_CSV_PATH`: caminho do CSV. Padrao: `rfid_access_log.csv`
-- `PUBNUB_SUBSCRIBE_KEY`: chave subscribe do PubNub
-- `PUBNUB_PUBLISH_KEY`: chave publish do PubNub
-- `PUBNUB_CHANNEL`: nome do canal PubNub. Padrao: `meu_canal`
-
-Exemplo no PowerShell:
-
-```powershell
-$env:PUBNUB_CHANNEL = "meu_canal"
-python app.py
+```bash
+cd backend
+sudo API_BASE_URL=http://127.0.0.1:5000 .venv/bin/python button.py
 ```
 
-## 5. Fluxo rapido para testar
+Pinos usados:
 
-1. Inicie `app.py`.
-2. Abra `http://127.0.0.1:5000/` no navegador.
-3. Rode `button.py` no Raspberry Pi.
-4. Aproxime uma tag RFID do leitor.
-5. Veja o evento aparecer no painel em tempo real.
+| Componente | GPIO BCM |
+| --- | --- |
+| LED verde | 17 |
+| LED vermelho | 27 |
+| Buzzer | 22 |
 
-## Observacoes
+## 8. Testar Sem RFID
 
-- `button.py` depende de hardware e nao deve rodar normalmente no Windows.
-- O `index.html` esta usando a chave subscribe e o canal direto no frontend. Se voce trocar o canal no backend, mantenha o mesmo valor no frontend.
-- Os eventos ficam salvos em SQLite e tambem em CSV para consulta rapida.
+Use o simulador:
+
+```bash
+cd backend
+.venv/bin/python simulate_reader.py 498103025204
+```
+
+Se a tag existir em `collaborators`, o backend aplica as regras reais. Se nao existir, registra `invasao`.
+
+## 9. PubNub
+
+Variaveis:
+
+```bash
+PUBNUB_SUBSCRIBE_KEY=sua_subscribe_key
+PUBNUB_PUBLISH_KEY=sua_publish_key
+PUBNUB_CHANNEL=meu_canal
+```
+
+O backend publica no canal configurado. O frontend deve assinar o mesmo canal.
+
+Se o PubNub falhar, o evento continua salvo no SQLite/CSV. O tempo real pode falhar, mas os dados nao sao perdidos.
+
+## 10. CSV E Analise
+
+Exportar logs:
+
+```text
+GET /v1/access-events/export.csv
+```
+
+Relatorio diario:
+
+```text
+GET /v1/reports/daily-presence?date=YYYY-MM-DD
+```
+
+O notebook `analysis_access_logs.ipynb` pode ler o CSV ou consultar dados exportados para responder:
+
+- quantas pessoas entraram;
+- quantas sairam;
+- tempo de permanencia;
+- tentativas negadas;
+- tentativas de invasao;
+- ranking de colaboradores sem autorizacao.
+
+## 11. Variaveis De Ambiente
+
+```bash
+APP_HOST=0.0.0.0
+APP_PORT=5000
+APP_DB_PATH=rfid_access.db
+APP_CSV_PATH=rfid_access_log.csv
+ADMIN_TOKEN=admin-demo-token
+PUBNUB_SUBSCRIBE_KEY=sua_subscribe_key
+PUBNUB_PUBLISH_KEY=sua_publish_key
+PUBNUB_CHANNEL=meu_canal
+```
+
