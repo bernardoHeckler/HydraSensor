@@ -1,0 +1,6 @@
+Flask>=3.0,<4.0
+requests>=2.31,<3.0
+pubnub>=10.6,<11.0
+pandas>=2.0,<3.0
+mfrc522==0.0.7; platform_system == "Linux"
+RPi.GPIO==0.7.1; platform_system == "Linux"
