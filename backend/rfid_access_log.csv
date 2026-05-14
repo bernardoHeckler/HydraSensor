@@ -1,0 +1,75 @@
+tag_id,collaborator_id,collaborator_name,registration,authorized,event_type,origin,message,read_at,created_at,synced
+497104650867,,Desconhecido,,False,invasao,raspberry-rfid,Tag 497104650867 desconhecida. Possivel tentativa de invasao.,2026-05-13T18:57:33,2026-05-13T18:57:33,True
+497104650867,,Desconhecido,,False,invasao,raspberry-rfid,Tag 497104650867 desconhecida. Possivel tentativa de invasao.,2026-05-13T18:57:37,2026-05-13T18:57:37,True
+497104650867,,Desconhecido,,False,invasao,raspberry-rfid,Tag 497104650867 desconhecida. Possivel tentativa de invasao.,2026-05-13T18:58:31,2026-05-13T18:58:31,True
+497104650867,,Desconhecido,,False,invasao,raspberry-rfid,Tag 497104650867 desconhecida. Possivel tentativa de invasao.,2026-05-13T18:59:49,2026-05-13T19:01:27,True
+497104650867,,Desconhecido,,False,invasao,raspberry-rfid,Tag 497104650867 desconhecida. Possivel tentativa de invasao.,2026-05-13T18:59:58,2026-05-13T19:01:28,True
+497104650867,,Desconhecido,,False,invasao,raspberry-rfid,Tag 497104650867 desconhecida. Possivel tentativa de invasao.,2026-05-13T19:02:04,2026-05-13T19:02:04,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo, Bernardo Antunes Heckler.",2026-05-13T19:03:21,2026-05-13T19:03:21,True
+693825048343,,Desconhecido,,False,invasao,raspberry-rfid,Tag 693825048343 desconhecida. Possivel tentativa de invasao.,2026-05-13T19:03:29,2026-05-13T19:03:29,True
+498103025204,,Desconhecido,,False,invasao,raspberry-rfid,Tag 498103025204 desconhecida. Possivel tentativa de invasao.,2026-05-13T19:03:45,2026-05-13T19:03:45,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T19:04:25,2026-05-13T19:04:25,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T19:04:42,2026-05-13T19:04:42,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T19:04:53,2026-05-13T19:04:53,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T19:04:58,2026-05-13T19:04:58,True
+693825048343,,Desconhecido,,False,invasao,raspberry-rfid,Tag 693825048343 desconhecida. Possivel tentativa de invasao.,2026-05-13T19:05:07,2026-05-13T19:05:07,True
+693825048343,3,Bento Martins,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Martins.,2026-05-13T19:05:54,2026-05-13T19:05:54,True
+839756745000,,Desconhecido,,False,invasao,raspberry-rfid,Tag 839756745000 desconhecida. Possivel tentativa de invasao.,2026-05-13T19:06:46,2026-05-13T19:06:46,True
+693825048343,3,Bento Martins,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Martins.,2026-05-13T19:07:39,2026-05-13T19:07:39,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T19:07:42,2026-05-13T19:07:42,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T19:11:08,2026-05-13T19:11:08,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T19:30:59,2026-05-13T19:30:59,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T19:31:13,2026-05-13T19:31:13,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T19:34:45,2026-05-13T19:34:45,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T19:34:52,2026-05-13T19:34:52,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T19:39:37,2026-05-13T19:39:37,True
+693825048343,3,Bento Teste,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Teste.,2026-05-13T19:39:45,2026-05-13T19:39:45,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T19:40:01,2026-05-13T19:40:01,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T19:40:16,2026-05-13T19:40:16,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T19:40:24,2026-05-13T19:40:24,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T19:40:31,2026-05-13T19:40:31,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T19:40:42,2026-05-13T19:40:42,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T19:44:56,2026-05-13T19:44:56,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T20:01:46,2026-05-13T20:01:46,True
+693825048343,3,Bento Teste,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Teste.,2026-05-13T20:01:56,2026-05-13T20:01:56,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:02:08,2026-05-13T20:02:08,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:03:55,2026-05-13T20:03:55,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:04:21,2026-05-13T20:04:21,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:06:32,2026-05-13T20:06:32,True
+693825048343,3,Bento Teste,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Teste.,2026-05-13T20:06:34,2026-05-13T20:06:34,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T20:06:36,2026-05-13T20:06:36,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:06:39,2026-05-13T20:06:39,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:06:41,2026-05-13T20:06:41,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:06:44,2026-05-13T20:06:44,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:13:23,2026-05-13T20:13:23,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T20:13:28,2026-05-13T20:13:28,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:13:30,2026-05-13T20:13:30,True
+693825048343,3,Bento Teste,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Teste.,2026-05-13T20:13:31,2026-05-13T20:13:31,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:13:37,2026-05-13T20:13:37,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:13:45,2026-05-13T20:13:45,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:13:48,2026-05-13T20:13:48,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:14:16,2026-05-13T20:14:16,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:14:21,2026-05-13T20:14:21,True
+693825048343,3,Bento Teste,1125095,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Bento Teste.,2026-05-13T20:14:23,2026-05-13T20:14:23,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T20:24:34,2026-05-13T20:24:34,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:24:37,2026-05-13T20:24:37,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:36:50,2026-05-13T20:36:50,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:37:15,2026-05-13T20:37:15,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:37:34,2026-05-13T20:37:34,True
+839756745000,4,Samuel Nunes,1136923,False,acesso_negado,raspberry-rfid,Colaborador inativo tentou acessar a sala: Samuel Nunes.,2026-05-13T20:37:37,2026-05-13T20:37:37,True
+693825048343,3,Bento Teste,1125095,True,entrada,raspberry-rfid,"Bem-vindo, Bento Teste.",2026-05-13T20:37:40,2026-05-13T20:37:40,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:37:45,2026-05-13T20:37:45,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:47:38,2026-05-13T20:47:38,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:47:50,2026-05-13T20:47:50,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:47:57,2026-05-13T20:47:57,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:48:01,2026-05-13T20:48:01,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:48:05,2026-05-13T20:48:05,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:48:50,2026-05-13T20:50:20,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bernardo Antunes Heckler.",2026-05-13T20:48:55,2026-05-13T20:50:21,True
+497104650867,1,Bernardo Antunes Heckler,1137118,True,saida,raspberry-rfid,Saida registrada para Bernardo Antunes Heckler.,2026-05-13T20:49:00,2026-05-13T20:50:21,True
+498103025204,2,Gabriel Rico,1136215,False,acesso_negado,raspberry-rfid,Colaborador sem permissao tentou acessar a sala: Gabriel Rico.,2026-05-13T20:49:03,2026-05-13T20:50:21,True
+693825048343,3,Bento Teste,1125095,True,saida,raspberry-rfid,Saida registrada para Bento Teste.,2026-05-13T20:49:07,2026-05-13T20:50:21,True
+693825048343,3,Bento Teste,1125095,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bento Teste.",2026-05-13T20:49:10,2026-05-13T20:50:21,True
+693825048343,3,Bento Teste,1125095,True,saida,raspberry-rfid,Saida registrada para Bento Teste.,2026-05-13T20:53:05,2026-05-13T20:53:05,True
+693825048343,3,Bento Teste,1125095,True,entrada,raspberry-rfid,"Bem-vindo de volta, Bento Teste.",2026-05-13T20:53:19,2026-05-13T20:53:19,True
+693825048343,3,Bento Teste,1125095,True,saida,raspberry-rfid,Saida registrada para Bento Teste.,2026-05-13T20:54:13,2026-05-13T20:55:00,True

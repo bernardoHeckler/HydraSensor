@@ -1,0 +1,6 @@
+tag_id,nome,autorizado,evento,origem,mensagem,lido_em
+839756745000,Nao cadastrado,False,tentativa_negada,raspberry-rfid,Tag 839756745000 nao autorizada.,2026-05-13T18:33:00
+498103025204,Bernardo,True,entrada,raspberry-rfid,Bernardo registrou entrada.,2026-05-13T18:33:06
+497104650867,Nao cadastrado,False,tentativa_negada,raspberry-rfid,Tag 497104650867 nao autorizada.,2026-05-13T18:33:11
+693825048343,Nao cadastrado,False,tentativa_negada,raspberry-rfid,Tag 693825048343 nao autorizada.,2026-05-13T18:33:13
+498103025204,Bernardo,True,saida,raspberry-rfid,Bernardo registrou saida.,2026-05-13T18:33:16

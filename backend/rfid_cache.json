@@ -1,0 +1,64 @@
+{
+  "collaborators": [
+    {
+      "has_room_access": 1,
+      "id": 3,
+      "is_active": 1,
+      "name": "Bento Teste",
+      "registration": "1125095",
+      "rfid_tag": "693825048343",
+      "role": "Dev BackEnd",
+      "updated_at": "2026-05-13T20:30:18"
+    },
+    {
+      "has_room_access": 1,
+      "id": 1,
+      "is_active": 1,
+      "name": "Bernardo Antunes Heckler",
+      "registration": "1137118",
+      "rfid_tag": "497104650867",
+      "role": "CEO",
+      "updated_at": "2026-05-13T19:02:58"
+    },
+    {
+      "has_room_access": 0,
+      "id": 2,
+      "is_active": 1,
+      "name": "Gabriel Rico",
+      "registration": "1136215",
+      "rfid_tag": "498103025204",
+      "role": "Analista de Dados",
+      "updated_at": "2026-05-13T19:04:20"
+    }
+  ],
+  "generated_at": "2026-05-13T20:55:00",
+  "tags": {
+    "497104650867": {
+      "collaborator_id": 1,
+      "has_room_access": true,
+      "is_active": true,
+      "name": "Bernardo Antunes Heckler",
+      "registration": "1137118",
+      "role": "CEO",
+      "updated_at": "2026-05-13T19:02:58"
+    },
+    "498103025204": {
+      "collaborator_id": 2,
+      "has_room_access": false,
+      "is_active": true,
+      "name": "Gabriel Rico",
+      "registration": "1136215",
+      "role": "Analista de Dados",
+      "updated_at": "2026-05-13T19:04:20"
+    },
+    "693825048343": {
+      "collaborator_id": 3,
+      "has_room_access": true,
+      "is_active": true,
+      "name": "Bento Teste",
+      "registration": "1125095",
+      "role": "Dev BackEnd",
+      "updated_at": "2026-05-13T20:30:18"
+    }
+  }
+}

@@ -8,7 +8,7 @@ __pycache__/
 *.db
 *.sqlite
 *.sqlite3
-*.csv
+.csv
 *.tsbuildinfo
-rfid_cache.json
-rfid_reader_backup.csv
+#rfid_cache.json
+#rfid_reader_backup.csv
